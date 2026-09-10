@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>OIN Bitcoin Mining Calculator</title>
+
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+  <!-- OINANCE BRAND -->
+
+  <div class="brand">
+
+    <!-- OINANCE BRAND HEADER -->
+<div class="oinance-brand">
+
+  <div class="brand-logo">
+    OIN
+  </div>
+
+  <div class="brand-info">
+    <h1>OINANCE</h1>
+    <p>Powered by OinanceLink Technology</p>
+  </div>
+
+</div>
+
+  </div>
+
+
+  <!-- CALCULATOR TITLE -->
+
+  <div class="product-badge">
+    OINANCE TECHNOLOGY
+</div>
+
+<h1>₿ Bitcoin Mining Calculator</h1>
+
+  
+<p class="calculator-description">
+    Calculate Bitcoin mining revenue, electricity costs and profitability in multiple global currencies.
+</p>
+  <p class="subtitle">
+
+    Estimate your Bitcoin mining profit worldwide
+
+  </p>
+
+
+
+  <!-- MINING MACHINE -->
+
+  <div class="input-group">
+
+    <label>Select Mining Machine</label>
+
+    <select id="miner"
+            onchange="selectMiner()">
+
+      <option value="custom">
+        Custom Input
+      </option>
+
+      <option value="s21">
+
+        Antminer S21
+
+      </option>
+
+      <option value="s21xp">
+
+        Antminer S21 XP
+
+      </option>
+
+      <option value="s19xp">
+
+        Antminer S19 XP
+
+      </option>
+
+      <option value="s19pro">
+
+        Antminer S19 Pro
+
+      </option>
+
+      <option value="m60">
+
+        WhatsMiner M60
+
+      </option>
+
+      <option value="m50">
+
+        WhatsMiner M50
+
+      </option>
+
+    </select>
+
+  </div>
+
+
+
+  <!-- HASHRATE -->
+
+  <div class="input-group">
+
+    <label>Hashrate (TH/s)</label>
+
+    <input
+      type="number"
+      id="hashrate"
+      placeholder="e.g. 100">
+
+  </div>
+
+
+
+  <!-- POWER -->
+
+  <div class="input-group">
+
+    <label>Power Usage (Watts)</label>
+
+    <input
+      type="number"
+      id="power"
+      placeholder="e.g. 3000">
+
+  </div>
+
+
+
+  <!-- ELECTRICITY -->
+
+  <div class="input-group">
+
+    <label>Electricity Cost ($ per kWh)</label>
+
+    <input
+      type="number"
+      id="electricity"
+      step="0.01"
+      placeholder="e.g. 0.10">
+
+  </div>
+
+
+
+  <!-- BITCOIN NETWORK -->
+
+  <div class="network-data">
+
+    <h3>Bitcoin Network Data</h3>
+
+
+    <div class="network-item">
+
+      Network Difficulty
+
+      <strong id="networkDifficulty">
+
+        113,000,000,000,000
+
+      </strong>
+
+    </div>
+
+
+    <div class="network-item">
+
+      Block Reward
+
+      <strong id="blockReward">
+
+        3.125 BTC
+
+      </strong>
+
+    </div>
+
+
+    <div class="network-item">
+
+      Blocks Per Day
+
+      <strong id="blocksPerDay">
+
+        144
+
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- MINING POOL FEE -->
+
+  <div class="input-group">
+
+    <label>Mining Pool Fee (%)</label>
+
+    <input
+      type="number"
+      id="poolFee"
+      value="2"
+      placeholder="2">
+
+  </div>
+
+
+
+  <!-- BITCOIN PRICE -->
+
+  <div class="input-group">
+
+    <label>Bitcoin Price (USD)</label>
+
+    <input
+      type="number"
+      id="bitcoinPrice"
+      placeholder="Click live price button">
+
+  </div>
+
+
+  <button
+    id="livePriceBtn"
+    onclick="getBitcoinPrice()">
+
+    Get Live Bitcoin Price
+
+  </button>
+
+
+
+  <!-- CURRENCY -->
+
+  <div class="input-group">
+
+    <label>Select Your Currency</label>
+
+    <select id="currency">
+
+      <option value="USD">
+        United States Dollar (USD $)
+      </option>
+
+      <option value="NGN">
+        Nigerian Naira (NGN ₦)
+      </option>
+
+      <option value="GBP">
+        British Pound (GBP £)
+      </option>
+
+      <option value="EUR">
+        Euro (EUR €)
+      </option>
+
+      <option value="CAD">
+        Canadian Dollar (CAD $)
+      </option>
+
+      <option value="AUD">
+        Australian Dollar (AUD $)
+      </option>
+
+      <option value="JPY">
+        Japanese Yen (JPY ¥)
+      </option>
+
+      <option value="CNY">
+        Chinese Yuan (CNY ¥)
+      </option>
+
+      <option value="INR">
+        Indian Rupee (INR ₹)
+      </option>
+
+      <option value="ZAR">
+        South African Rand (ZAR R)
+      </option>
+
+      <option value="GHS">
+        Ghanaian Cedi (GHS ₵)
+      </option>
+
+      <option value="KES">
+        Kenyan Shilling (KES)
+      </option>
+
+      <option value="AED">
+        UAE Dirham (AED)
+      </option>
+
+      <option value="SAR">
+        Saudi Riyal (SAR)
+      </option>
+
+      <option value="BRL">
+        Brazilian Real (BRL R$)
+      </option>
+
+      <option value="MXN">
+        Mexican Peso (MXN)
+      </option>
+
+      <option value="CHF">
+        Swiss Franc (CHF)
+      </option>
+
+      <option value="SGD">
+        Singapore Dollar (SGD)
+      </option>
+
+      <option value="KRW">
+        South Korean Won (KRW ₩)
+      </option>
+
+      <option value="TRY">
+        Turkish Lira (TRY ₺)
+      </option>
+
+      <option value="IDR">
+        Indonesian Rupiah (IDR)
+      </option>
+
+      <option value="PHP">
+        Philippine Peso (PHP ₱)
+      </option>
+
+    </select>
+
+  </div>
+
+
+
+  <!-- BUTTONS -->
+
+  <button
+    class="calculate-btn"
+    onclick="calculateProfit()">
+
+    Calculate Mining Profit
+
+  </button>
+
+
+  <button
+    class="reset-btn"
+    onclick="resetCalculator()">
+
+    Reset Calculator
+
+  </button>
+
+  <button onclick="downloadReport()" class="download-btn">
+    Download Mining Report
+</button>
+
+
+
+  <!-- RESULTS -->
+
+  <div class="results">
+
+    <div class="result-box">
+
+      <span>Estimated Daily Revenue</span>
+
+      <strong id="revenue">$0</strong>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span>Daily Electricity Cost</span>
+
+      <strong id="electricityCost">$0</strong>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span>Estimated Daily Profit</span>
+
+      <strong id="profit">$0</strong>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span>Estimated Monthly Profit</span>
+
+      <strong id="monthlyProfit">$0</strong>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span>Estimated Yearly Profit</span>
+
+      <strong id="yearlyProfit">$0</strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- MINING STATUS -->
+
+  <div class="status-box">
+
+    <span>Mining Status</span>
+
+    <strong id="miningStatus">
+
+      Calculate to See Status
+
+    </strong>
+
+  </div>
+
+
+
+  <!-- MINING SUMMARY -->
+
+  <div class="summary">
+
+    <h3>OIN Mining Summary</h3>
+
+
+    <div>
+
+      <span>Mining Machine:</span>
+
+      <strong id="summaryMiner">
+
+        Custom Input
+
+      </strong>
+
+    </div>
+
+
+    <div>
+
+      <span>Hashrate:</span>
+
+      <strong id="summaryHashrate">
+
+        0 TH/s
+
+      </strong>
+
+    </div>
+
+
+    <div>
+
+      <span>Power Usage:</span>
+
+      <strong id="summaryPower">
+
+        0 W
+
+      </strong>
+
+    </div>
+
+
+    <div>
+
+      <span>Currency:</span>
+
+      <strong id="summaryCurrency">
+
+        USD
+
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- PROFIT CHART -->
+
+  <div class="chart-container">
+
+    <h3>OIN Mining Profit Chart</h3>
+
+    <canvas id="profitChart"></canvas>
+
+  </div>
+
+
+
+  <!-- COMPANY FOOTER -->
+
+  <div class="footer">
+
+    <strong>OINANCE</strong>
+
+    <p>
+      OIN Bitcoin Mining Calculator
+    </p>
+
+    <small>
+      Powered by OinanceLink Technology
+    </small>
+
+  </div>
+
+
+</div>
+
+
+<!-- CHART.JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
