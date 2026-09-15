@@ -415,3 +415,46 @@ button:active {
     padding: 15px;
   }
 }
+
+/* OINANCE COLOR OVERRIDE */
+
+body {
+  background: #050505 !important;
+  color: #ffffff !important;
+}
+
+.container {
+  background: #0d0d0d !important;
+  border-color: rgba(255,255,255,0.1) !important;
+}
+
+button {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+.oinance-brand,
+.result-box,
+.results div,
+.mining-status,
+.mining-summary,
+.chart-container {
+  background: #111111 !important;
+}
+
+input,
+select {
+  background: #151515 !important;
+  color: #ffffff !important;
+}
+
+.product-badge {
+  background: #151515 !important;
+  color: #ffffff !important;
+}
+
+.results strong,
+.mining-summary h2,
+.chart-container h2 {
+  color: #ffffff !important;
+}
